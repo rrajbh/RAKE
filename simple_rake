@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+# source = https://www.youtube.com/watch?v=xdlrQ0-okZc 
+from rake_nltk import Rake
+
+
+input_text = """
+Computer science is the study of computation, automation, and information. 
+Computer science spans theoretical disciplines (such as algorithms, theory of computation, 
+information theory, and automation) to practical disciplines (including the design and implementation of hardware and software).
+Computer science is generally considered an area of academic research and distinct from computer programming.
+"""
+input_text = input_text.replace("(", "").replace (")","")
+#print (input_text)
+rake = Rake()
+rake.extract_keywords_from_text(input_text)
+keywords = rake.get_ranked_phrases()
+#print (rake.get_ranked_phrases())
+print(set([keyword for keyword in keywords if len(keyword.split())>1]))
